@@ -4,10 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MaterialDesignModule } from './material-design/material-design.module';
+import { MaterialTestComponent } from './material-test/material-test.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MaterialTestComponent
   ],
   imports: [
     BrowserModule,
