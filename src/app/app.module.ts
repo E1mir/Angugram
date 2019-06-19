@@ -6,12 +6,14 @@ import { AppComponent } from '@app/app.component';
 import { MaterialDesignModule } from '@app/material-design/material-design.module';
 import { MaterialTestComponent } from '@app/material-test/material-test.component';
 import { HeaderComponent } from './header/header.component';
+import { MaterialGridTestComponent } from './material-grid-test/material-grid-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MaterialTestComponent,
-    HeaderComponent
+    HeaderComponent,
+    MaterialGridTestComponent
   ],
   imports: [
     BrowserModule,
