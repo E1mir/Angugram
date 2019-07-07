@@ -7,6 +7,8 @@ import { MaterialDesignModule } from '@app/material-design/material-design.modul
 import { MaterialTestComponent } from '@app/material-test/material-test.component';
 import { HeaderComponent } from './header/header.component';
 import { MaterialGridTestComponent } from './material-grid-test/material-grid-test.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { InstagramInterceptorService } from '@app/core/interceptors/instagram-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,15 @@ import { MaterialGridTestComponent } from './material-grid-test/material-grid-te
     BrowserModule,
     BrowserAnimationsModule,
     MaterialDesignModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InstagramInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
