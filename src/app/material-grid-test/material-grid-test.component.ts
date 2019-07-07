@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { GridList, GridTile } from '@dt/interfaces/grid-elements';
 
 @Component({
   selector: 'app-material-grid-test',
