@@ -23,7 +23,7 @@
         "./src/app/*"
       ],
       "@dt/*": [
-        "./src/app/definitions/*"
+        "./src/app/core/definitions/*"
       ]
     }
   }
