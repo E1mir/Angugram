@@ -1,0 +1,30 @@
+.search {
+  &__form {
+    text-align: center;
+
+    &__input {
+      height: 36px;
+      width: 240px;
+      border: 1px solid #B8B8B8;
+      border-radius: 4px;
+      padding: 5px 10px;
+      outline: none;
+      box-shadow: 0 2px 5px 0 #B8B8B8;
+      margin-right: 5px;
+
+      &:focus {
+        box-shadow: 0 2px 5px 0 #757575;
+      }
+
+      &.ng-touched.ng-invalid {
+        border-color: red;
+        box-shadow: 0 2px 5px 0 #dc1300;
+
+      }
+    }
+
+    &__label {
+      margin-right: 5px;
+    }
+  }
+}
