@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { InstagramPostsService } from '@app/core/services/instagram.posts.service';
+import { InstagramService } from '@app/core/services/instagram.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,11 @@ import { InstagramPostsService } from '@app/core/services/instagram.posts.servic
 export class AppComponent {
   title = 'Angugram';
 
-  constructor(private instagramPostsService: InstagramPostsService) {
+  constructor(private instagramService: InstagramService) {
   }
 
   onExplore() {
-    this.instagramPostsService.searchByTag('apple').subscribe(
+    this.instagramService.searchByTag('apple').subscribe(
       (responseData) => {
         console.log(responseData);
       }

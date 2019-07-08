@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
-export class InstagramPostsService {
+export class InstagramService {
   private MAIN_URL = 'https://instagram.com';
 
   constructor(private http: HttpClient) {
