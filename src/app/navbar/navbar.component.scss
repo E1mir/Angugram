@@ -8,6 +8,7 @@
   background-color: $cream;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.55);
   position: fixed;
+  top: 0;
   z-index: 999;
 
   &__list {
@@ -19,6 +20,7 @@
       display: inline-flex;
       align-items: center;
       vertical-align: middle;
+      outline: none;
       color: $black;
 
       .avatar {
