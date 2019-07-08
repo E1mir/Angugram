@@ -33,3 +33,8 @@ export interface Owner {
   id: number;
   username: string;
 }
+
+export interface SearchForm {
+  isUserSearch: boolean;
+  target: string;
+}
