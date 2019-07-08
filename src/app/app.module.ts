@@ -9,19 +9,33 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialGridTestComponent } from './material-grid-test/material-grid-test.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InstagramInterceptorService } from '@app/core/interceptors/instagram-interceptor.service';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
+import { PreloaderComponent } from './core/components/preloader/preloader.component';
+import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { UserComponent } from './user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MaterialTestComponent,
     NavbarComponent,
-    MaterialGridTestComponent
+    MaterialGridTestComponent,
+    PageNotFoundComponent,
+    PreloaderComponent,
+    HomeComponent,
+    UserComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialDesignModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
