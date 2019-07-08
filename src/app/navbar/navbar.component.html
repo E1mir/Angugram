@@ -1,12 +1,12 @@
 <div class="navbar">
   <div class="container">
     <ul class="navbar__list">
-      <li class="navbar__list__item navbar__list__item_brand">
+      <li class="navbar__list__item navbar__list__item_brand" routerLink="">
         <img class="brand__logo" src="../../assets/images/AngularShield.svg" alt="Angugram">
         <span class="brand__text">ngugram</span>
       </li>
       <li class="navbar__list__item navbar__list__item_right">
-        <div class="avatar" *ngIf="me">
+        <div class="avatar" *ngIf="me" (click)="toDeveloperPage()">
           <div class="avatar__backdrop"></div>
           <span class="avatar__text">Me</span>
           <img class="avatar__image" [src]="me.profilePicUrl" [alt]="me.username" [title]="me.fullName">

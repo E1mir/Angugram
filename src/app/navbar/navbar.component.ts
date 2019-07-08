@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InstagramService } from '@app/core/services/instagram.service';
 import { User } from '@dt/interfaces/instagram';
 import { MY_PROFILE_USERNAME } from '@app/core/variables/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,10 @@ export class NavbarComponent implements OnInit {
 
   me: User = null;
 
-  constructor(private instagramService: InstagramService) {
+  constructor(
+    private instagramService: InstagramService,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
@@ -23,4 +27,7 @@ export class NavbarComponent implements OnInit {
     );
   }
 
+  toDeveloperPage() {
+    this.router.navigate(['user', this.me.username]);
+  }
 }
