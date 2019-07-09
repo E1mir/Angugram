@@ -16,6 +16,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { ShortenPipe } from './core/pipes/shorten.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SearchComponent } from './search/search.component';
     PreloaderComponent,
     HomeComponent,
     UserComponent,
-    SearchComponent
+    SearchComponent,
+    ShortenPipe
   ],
   imports: [
     BrowserModule,
