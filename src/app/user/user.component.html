@@ -10,13 +10,18 @@
   [user]="user"
   class="user">
   <mat-card class="user__card">
-    <img
-      *ngIf="user.username === MY_PROFILE_USERNAME"
-      class="user__crown"
-      src="../../assets/images/crown.png"
-      alt="Developer">
     <mat-card-header>
-      <div mat-card-avatar class="user__avatar" [ngStyle]="setAvatar"></div>
+      <img
+        *ngIf="user.username === MY_PROFILE_USERNAME"
+        class="user__crown"
+        src="../../assets/images/crown.png"
+        alt="Developer">
+      <div
+        mat-card-avatar
+        class="user__avatar"
+        [ngStyle]="setAvatar"
+        (click)="onShowPhotoInDialog(user.profilePicUrlHD)">
+      </div>
       <mat-card-title>{{ user.fullName ? user.fullName : user.username }}</mat-card-title>
       <mat-card-subtitle> {{ user.username }}</mat-card-subtitle>
     </mat-card-header>
