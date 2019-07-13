@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InstagramService } from '@app/core/services/instagram.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { version } from '../../../package.json';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public version = version;
 
   constructor(
-    private instagramService: InstagramService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+  }
 
   ngOnInit() {
   }
 
-  onExplore() {
-    this.instagramService.searchByTag('apple').subscribe(
-      (responseData) => {
-        console.log(responseData);
-      }
-    );
-  }
 }

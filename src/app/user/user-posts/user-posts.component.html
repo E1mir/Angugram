@@ -12,14 +12,16 @@
     class="posts__private"
     colspan="2"
     rowspan="2"
-    *ngIf="isPrivate">
-    <p>This account is private!</p>
+    *ngIf="isPrivate || noPosts">
+    <p *ngIf="isPrivate && !noPosts">This account is private!</p>
+    <p *ngIf="noPosts && !isPrivate">No posts :(</p>
+    <p *ngIf="isPrivate && noPosts">This account is private and doesn't have any posts</p>
   </mat-grid-tile>
   <mat-grid-tile
     class="posts__post"
     colspan="1"
     *ngFor="let post of user.posts">
-    <div class="image">
+    <div class="image" (click)="onShowPhotoInDialog(post.url, post.caption, post.likes)">
       <div class="image__overlay"></div>
       <div class="image__info">
         <div class="image__info__icon">
@@ -28,7 +30,7 @@
           </i>
         </div>
         <p class="image__info__likes-count">
-          {{ post.likes }}
+          {{ post.likes | numberFormat }}
         </p>
       </div>
       <img

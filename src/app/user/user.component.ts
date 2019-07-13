@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MY_PROFILE_USERNAME } from '@app/core/variables/constants';
-import { SearchForm, User } from '@dt/interfaces/instagram';
+import { DIALOG_WIDTH, MY_PROFILE_USERNAME } from '@app/core/variables/constants';
+import { DialogData, SearchForm, User } from '@dt/interfaces/instagram';
 import { InstagramService } from '@app/core/services/instagram.service';
+import { MatDialog } from '@angular/material';
+import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -12,16 +14,19 @@ import { InstagramService } from '@app/core/services/instagram.service';
 })
 export class UserComponent implements OnInit, OnDestroy {
   paramsSubscription: Subscription;
+  instaSubscription: Subscription;
   username: string;
   user: User;
   isDataLoaded = true;
+  errorMessage: string;
 
   MY_PROFILE_USERNAME = MY_PROFILE_USERNAME;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private instaService: InstagramService
+    private instaService: InstagramService,
+    private dialog: MatDialog
   ) {
   }
 
@@ -37,6 +42,8 @@ export class UserComponent implements OnInit, OnDestroy {
   acceptSearch(searchForm: SearchForm) {
     const isUserSearch = searchForm.isUserSearch;
     const target = searchForm.target;
+    this.errorMessage = '';
+
     if (isUserSearch) {
       this.goToUser(target);
     } else {
@@ -46,6 +53,15 @@ export class UserComponent implements OnInit, OnDestroy {
 
   goToUser(username: string) {
     this.router.navigate(['user', username]);
+  }
+
+  onShowPhotoInDialog(photoUrl: string) {
+    this.dialog.open(PhotoDialogComponent, {
+      maxWidth: DIALOG_WIDTH,
+      data: {
+        photoUrl: photoUrl,
+      } as DialogData
+    });
   }
 
   goToExplore(tag: string) {
@@ -58,18 +74,21 @@ export class UserComponent implements OnInit, OnDestroy {
 
   private fetchUser() {
     this.isDataLoaded = false;
-    this.instaService.getAccountByUsername(this.username).subscribe(
+    this.instaSubscription = this.instaService.getAccountByUsername(this.username).subscribe(
       user => {
         this.user = user;
         this.isDataLoaded = true;
       },
       error => {
-        console.log('User Not Found');
+        this.isDataLoaded = true;
+        this.user = null;
+        this.errorMessage = `User ${this.username} not found!`;
       }
     );
   }
 
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
+    this.instaSubscription.unsubscribe();
   }
 }

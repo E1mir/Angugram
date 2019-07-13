@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatGridListModule,
   MatInputModule,
   MatProgressBarModule,
@@ -20,7 +21,8 @@ import {
     MatGridListModule,
     MatProgressBarModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ]
 })
 export class MaterialDesignModule {

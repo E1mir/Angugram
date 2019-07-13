@@ -17,6 +17,7 @@ import { SearchComponent } from './search/search.component';
 import { ShortenPipe } from './core/pipes/shorten.pipe';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { NumberFormatPipe } from './core/pipes/number-format.pipe';
+import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NumberFormatPipe } from './core/pipes/number-format.pipe';
     SearchComponent,
     ShortenPipe,
     UserPostsComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    PhotoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,9 @@ import { NumberFormatPipe } from './core/pipes/number-format.pipe';
       useClass: InstagramInterceptorService,
       multi: true
     }
+  ],
+  entryComponents: [
+    PhotoDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

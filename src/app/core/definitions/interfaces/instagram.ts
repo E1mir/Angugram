@@ -39,3 +39,9 @@ export interface SearchForm {
   isUserSearch: boolean;
   target: string;
 }
+
+export interface DialogData {
+  photoUrl: string;
+  caption?: string;
+  likes?: number;
+}

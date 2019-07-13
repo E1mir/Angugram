@@ -1,0 +1,47 @@
+.wrapper {
+  overflow: hidden;
+  text-align: center;
+
+  .photo {
+    max-width: 450px;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__likes {
+      margin-right: 5px;
+    }
+
+    &__icon {
+      color: red;
+    }
+  }
+
+  .caption {
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

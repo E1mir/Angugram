@@ -9,22 +9,27 @@
       border-radius: 4px;
       padding: 5px 10px;
       outline: none;
-      box-shadow: 0 2px 5px 0 #B8B8B8;
+      box-shadow: 0 1px 3px 0 #B8B8B8;
       margin-right: 5px;
 
       &:focus {
-        box-shadow: 0 2px 5px 0 #757575;
+        box-shadow: 0 1px 3px 0 #757575;
       }
 
       &.ng-touched.ng-invalid {
         border-color: red;
-        box-shadow: 0 2px 5px 0 #dc1300;
+        box-shadow: 0 1px 3px 0 #dc1300;
 
       }
     }
 
     &__label {
       margin-right: 5px;
+    }
+
+    &__submit {
+      position: relative;
+      top: 1px;
     }
   }
 }
