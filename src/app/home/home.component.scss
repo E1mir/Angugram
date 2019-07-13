@@ -1,3 +1,23 @@
+.welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6rem;
+  font-weight: normal;
+  display: none;
+
+  .brand {
+    font-size: 6.5rem;
+    color: red;
+    font-weight: bold;
+  }
+
+  &.active {
+    display: block;
+  }
+}
+
 .content {
   margin-top: 90px;
 
