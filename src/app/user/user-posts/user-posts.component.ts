@@ -21,6 +21,10 @@ export class UserPostsComponent implements OnInit {
     return this.user.isPrivate;
   }
 
+  get noPosts() {
+    return this.user.mediaCount === 0;
+  }
+
   onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number) {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,

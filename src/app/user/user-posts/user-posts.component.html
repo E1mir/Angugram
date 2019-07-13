@@ -12,8 +12,9 @@
     class="posts__private"
     colspan="2"
     rowspan="2"
-    *ngIf="isPrivate">
-    <p>This account is private!</p>
+    *ngIf="isPrivate || noPosts">
+    <p *ngIf="isPrivate">This account is private!</p>
+    <p *ngIf="noPosts">No posts :(</p>
   </mat-grid-tile>
   <mat-grid-tile
     class="posts__post"
