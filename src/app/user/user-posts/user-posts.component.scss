@@ -1,0 +1,71 @@
+@import "../../core/variables/colors";
+
+.posts {
+  &__avatar {
+    //KEEP
+  }
+
+  &__post {
+    user-select: none;
+
+    .image {
+      $transition: .3s;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+
+      &__photo {
+        max-width: 100%;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+      }
+
+      &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        opacity: 0;
+        z-index: 1;
+        transition: $transition;
+      }
+
+      &__info {
+        text-align: center;
+        color: $cream;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        opacity: 0;
+        transition: $transition;
+
+        &__like-count {
+          font-size: 14px;
+        }
+      }
+
+      &:hover {
+        .image {
+          &__overlay, &__info {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &__overlay {
+      // KEEP
+    }
+
+  }
+
+  &__private {
+    font-size: 25px;
+  }
+}
