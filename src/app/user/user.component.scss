@@ -42,4 +42,17 @@
       color: #6b6b6b;
     }
   }
+
+  &__followers-info {
+    color: #0E1116;
+
+    .info {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .icon {
+      color: red;
+    }
+  }
 }

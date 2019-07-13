@@ -39,8 +39,28 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button title="Followers">{{ user.followers }}</button>
-      <button mat-button title="Followings">{{ user.followings }}</button>
+      <button
+        mat-button
+        [matTooltip]="user.followers > 1000 ? user.followers.toString(): ''"
+        color="primary"
+        title="Followers"
+        class="user__followers-info">
+        <span class="info">{{ user.followers | numberFormat }}</span>
+        <i class="icon material-icons">
+          favorite_border
+        </i>
+      </button>
+      <button
+        mat-button
+        [matTooltip]="user.followings > 1000 ? user.followings.toString(): ''"
+        color="primary"
+        title="Followings"
+        class="user__followers-info">
+        <span class="info">{{ user.followings | numberFormat }}</span>
+        <i class="icon material-icons">
+          favorite
+        </i>
+      </button>
     </mat-card-actions>
   </mat-card>
 </app-user-posts>
