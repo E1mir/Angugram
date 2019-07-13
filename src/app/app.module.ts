@@ -4,9 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from '@app/app.component';
 import { MaterialDesignModule } from '@app/material-design/material-design.module';
-import { MaterialTestComponent } from '@app/material-test/material-test.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MaterialGridTestComponent } from './material-grid-test/material-grid-test.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InstagramInterceptorService } from '@app/core/interceptors/instagram-interceptor.service';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
@@ -16,18 +14,22 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { UserComponent } from './user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { ShortenPipe } from './core/pipes/shorten.pipe';
+import { UserPostsComponent } from './user/user-posts/user-posts.component';
+import { NumberFormatPipe } from './core/pipes/number-format.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MaterialTestComponent,
     NavbarComponent,
-    MaterialGridTestComponent,
     PageNotFoundComponent,
     PreloaderComponent,
     HomeComponent,
     UserComponent,
-    SearchComponent
+    SearchComponent,
+    ShortenPipe,
+    UserPostsComponent,
+    NumberFormatPipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,58 @@
+.user {
+  position: relative;
+  top: 15px;
+
+  &__preloader {
+    margin: 10px 0;
+  }
+
+  &__card {
+    position: relative;
+    top: 0;
+  }
+
+  &__photo {
+    max-width: 400px;
+  }
+
+  &__crown {
+    position: absolute;
+    width: 50px;
+    top: -10px;
+    left: 3px;
+  }
+
+  &__avatar {
+    //background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  &__bio {
+    white-space: pre-wrap; /* css-3 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+  }
+
+  &__ex-link {
+    white-space: normal;
+    word-wrap: normal;
+    color: #000000;
+    text-decoration: underline;
+
+    &:hover {
+      color: #6b6b6b;
+    }
+  }
+
+  &__followers-info {
+    color: #0E1116;
+
+    .info {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .icon {
+      color: red;
+    }
+  }
+}

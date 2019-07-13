@@ -1,7 +1,66 @@
 <app-search
   (searchValue)="acceptSearch($event)">
 </app-search>
-<div class="" *ngIf="username === MY_PROFILE_USERNAME">
-  It's me =)
-</div>
 
+<app-preloader
+  *ngIf="!isDataLoaded">
+</app-preloader>
+<app-user-posts
+  *ngIf="user"
+  [user]="user"
+  class="user">
+  <mat-card class="user__card">
+    <img
+      *ngIf="user.username === MY_PROFILE_USERNAME"
+      class="user__crown"
+      src="../../assets/images/crown.png"
+      alt="Developer">
+    <mat-card-header>
+      <div mat-card-avatar class="user__avatar" [ngStyle]="setAvatar"></div>
+      <mat-card-title>{{ user.fullName ? user.fullName : user.username }}</mat-card-title>
+      <mat-card-subtitle> {{ user.username }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      class="user__photo"
+      *ngIf="user.username === MY_PROFILE_USERNAME"
+      src="../../assets/images/developer.jpg"
+      [alt]="user.username">
+    <mat-card-content>
+      <p class="user__bio">{{ user.biography }}</p>
+      <div *ngIf="user.externalUrl">
+        <hr>
+        <a class="user__ex-link"
+           target="_blank"
+           [href]="user.externalUrl"
+           *ngIf="user.externalUrl">
+          {{ user.externalUrl | shorten: 50 }}
+        </a>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        [matTooltip]="user.followers > 1000 ? user.followers.toString(): ''"
+        color="primary"
+        title="Followers"
+        class="user__followers-info">
+        <span class="info">{{ user.followers | numberFormat }}</span>
+        <i class="icon material-icons">
+          favorite_border
+        </i>
+      </button>
+      <button
+        mat-button
+        [matTooltip]="user.followings > 1000 ? user.followings.toString(): ''"
+        color="primary"
+        title="Followings"
+        class="user__followers-info">
+        <span class="info">{{ user.followings | numberFormat }}</span>
+        <i class="icon material-icons">
+          favorite
+        </i>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</app-user-posts>

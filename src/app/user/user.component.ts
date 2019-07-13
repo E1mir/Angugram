@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MY_PROFILE_USERNAME } from '@app/core/variables/constants';
-import { SearchForm } from '@dt/interfaces/instagram';
+import { SearchForm, User } from '@dt/interfaces/instagram';
+import { InstagramService } from '@app/core/services/instagram.service';
 
 @Component({
   selector: 'app-user',
@@ -12,12 +13,15 @@ import { SearchForm } from '@dt/interfaces/instagram';
 export class UserComponent implements OnInit, OnDestroy {
   paramsSubscription: Subscription;
   username: string;
+  user: User;
+  isDataLoaded = true;
 
   MY_PROFILE_USERNAME = MY_PROFILE_USERNAME;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private instaService: InstagramService
   ) {
   }
 
@@ -25,6 +29,7 @@ export class UserComponent implements OnInit, OnDestroy {
     this.paramsSubscription = this.route.params.subscribe(
       (params: Params) => {
         this.username = params['username'];
+        this.fetchUser();
       }
     );
   }
@@ -45,6 +50,23 @@ export class UserComponent implements OnInit, OnDestroy {
 
   goToExplore(tag: string) {
     console.log('unsupported');
+  }
+
+  get setAvatar() {
+    return {backgroundImage: `url('${this.user.profilePicUrl}')`};
+  }
+
+  private fetchUser() {
+    this.isDataLoaded = false;
+    this.instaService.getAccountByUsername(this.username).subscribe(
+      user => {
+        this.user = user;
+        this.isDataLoaded = true;
+      },
+      error => {
+        console.log('User Not Found');
+      }
+    );
   }
 
   ngOnDestroy(): void {
