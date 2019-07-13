@@ -1,0 +1,26 @@
+.wrapper {
+  overflow-y: hidden;
+
+  .photo {
+    min-width: 100%;
+  }
+
+  .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__likes {
+      margin-right: 5px;
+    }
+
+    &__icon {
+      color: red;
+    }
+  }
+
+  .caption {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+}
