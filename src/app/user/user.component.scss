@@ -17,19 +17,19 @@
 
   &__crown {
     position: absolute;
-    width: 50px;
-    top: -10px;
-    left: 3px;
+    width: 35px;
+    top: 3px;
+    left: 10px;
   }
 
   &__avatar {
-    //background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    cursor: pointer;
     background-size: cover;
   }
 
   &__bio {
-    white-space: pre-wrap; /* css-3 */
-    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   &__ex-link {
