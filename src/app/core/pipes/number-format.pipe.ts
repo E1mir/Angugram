@@ -7,17 +7,19 @@ import { MILLION, MILLION_ABBR, THOUSAND, THOUSAND_ABBR } from '@app/core/variab
 export class NumberFormatPipe implements PipeTransform {
 
   transform(value: number): string {
-    let shortenedValue = 0;
-    let formattedValue = '';
+    let formattedValue = value.toString();
+    let abbreviation: string;
     if (value > THOUSAND && value < MILLION) {
-      shortenedValue = value / THOUSAND;
-      formattedValue = `${+shortenedValue.toFixed(1)}${THOUSAND_ABBR}`;
-
+      formattedValue = (value / THOUSAND).toString();
+      abbreviation = THOUSAND_ABBR;
     } else if (value >= MILLION) {
-      shortenedValue = value / MILLION;
-      formattedValue = `${+shortenedValue.toFixed(1)}${MILLION_ABBR}`;
-    } else {
-      formattedValue = value.toString();
+      formattedValue = (value / MILLION).toString();
+      abbreviation = MILLION_ABBR;
+    }
+    const splitValue = formattedValue.split('.');
+    if (splitValue.length > 1) {
+      const shortenValue = Number(`${splitValue[0]}.${splitValue[1].charAt(0)}`);
+      formattedValue = `${shortenValue} ${abbreviation}`;
     }
     return formattedValue;
   }
