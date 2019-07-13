@@ -1,10 +1,14 @@
 <app-search
   (searchValue)="acceptSearch($event)">
 </app-search>
-<br>
-<app-preloader *ngIf="!isDataLoaded"></app-preloader>
-<br>
-<div class="user" *ngIf="user;">
+
+<app-preloader
+  *ngIf="!isDataLoaded">
+</app-preloader>
+<app-user-posts
+  *ngIf="user"
+  [user]="user"
+  class="user">
   <mat-card class="user__card">
     <img
       *ngIf="user.username === MY_PROFILE_USERNAME"
@@ -12,11 +16,16 @@
       src="../../assets/images/crown.png"
       alt="Developer">
     <mat-card-header>
-      <div mat-card-avatar class="user__avatar" [ngStyle]="setAvatar()"></div>
+      <div mat-card-avatar class="user__avatar" [ngStyle]="setAvatar"></div>
       <mat-card-title>{{ user.fullName ? user.fullName : user.username }}</mat-card-title>
       <mat-card-subtitle> {{ user.username }}</mat-card-subtitle>
     </mat-card-header>
-    <!--    <img mat-card-image [src]="user.profilePicUrlHD" [alt]="user.username">-->
+    <img
+      mat-card-image
+      class="user__photo"
+      *ngIf="user.username === MY_PROFILE_USERNAME"
+      src="../../assets/images/developer.jpg"
+      [alt]="user.username">
     <mat-card-content>
       <p class="user__bio">{{ user.biography }}</p>
       <div *ngIf="user.externalUrl">
@@ -34,4 +43,4 @@
       <button mat-button title="Followings">{{ user.followings }}</button>
     </mat-card-actions>
   </mat-card>
-</div>
+</app-user-posts>

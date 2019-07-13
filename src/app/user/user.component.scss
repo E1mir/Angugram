@@ -1,7 +1,18 @@
 .user {
+  position: relative;
+  top: 15px;
+
+  &__preloader {
+    margin: 10px 0;
+  }
+
   &__card {
-    max-width: 320px;
     position: relative;
+    top: 0;
+  }
+
+  &__photo {
+    max-width: 400px;
   }
 
   &__crown {

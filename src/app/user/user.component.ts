@@ -52,7 +52,7 @@ export class UserComponent implements OnInit, OnDestroy {
     console.log('unsupported');
   }
 
-  setAvatar() {
+  get setAvatar() {
     return {backgroundImage: `url('${this.user.profilePicUrl}')`};
   }
 
