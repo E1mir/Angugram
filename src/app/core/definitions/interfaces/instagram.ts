@@ -21,7 +21,7 @@ export interface User {
 export interface Media {
   id: number;
   likes: number;
-  comment: string;
+  caption: string;
   comments_disabled: boolean;
   isVideo: boolean;
   location: string;
