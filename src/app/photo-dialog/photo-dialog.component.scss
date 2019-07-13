@@ -1,8 +1,9 @@
 .wrapper {
   overflow-y: hidden;
+  text-align: center;
 
   .photo {
-    min-width: 100%;
+    max-width: 450px;
   }
 
   .info {
@@ -20,7 +21,9 @@
   }
 
   .caption {
+    text-align: left;
     white-space: pre-wrap;
     word-wrap: break-word;
+    margin-bottom: 10px;
   }
 }
