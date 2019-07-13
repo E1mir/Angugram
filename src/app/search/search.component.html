@@ -13,7 +13,12 @@
             id="searchInput"
             formControlName="search"
             (input)="onSearchInputChange()">
-          <button mat-raised-button color="primary" [disabled]="searchFormGroup.invalid" (click)="submit()">
+          <button
+            class="search__form__submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="searchFormGroup.invalid"
+            (click)="submit()">
             {{ buttonName }}
           </button>
         </div>
