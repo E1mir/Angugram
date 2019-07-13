@@ -13,6 +13,7 @@ export interface User {
   isPrivate: boolean;
   isVerified: boolean;
   mediaCount: number;
+  posts: Media[];
   biography?: string;
   externalUrl?: string;
 }
