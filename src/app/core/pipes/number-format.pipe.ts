@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { MILLION, MILLION_ABBR, THOUSAND, THOUSAND_ABBR } from '@app/core/variables/constants';
 
 @Pipe({
-  name: 'valueFormat'
+  name: 'numberFormat'
 })
-export class ValueFormatPipe implements PipeTransform {
+export class NumberFormatPipe implements PipeTransform {
 
   transform(value: number): string {
     let shortenedValue = 0;

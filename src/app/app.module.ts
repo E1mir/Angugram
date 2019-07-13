@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { ShortenPipe } from './core/pipes/shorten.pipe';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
-import { ValueFormatPipe } from './core/pipes/value-format.pipe';
+import { NumberFormatPipe } from './core/pipes/number-format.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { ValueFormatPipe } from './core/pipes/value-format.pipe';
     SearchComponent,
     ShortenPipe,
     UserPostsComponent,
-    ValueFormatPipe
+    NumberFormatPipe
   ],
   imports: [
     BrowserModule,
