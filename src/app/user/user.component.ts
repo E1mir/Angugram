@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MY_PROFILE_USERNAME } from '@app/core/variables/constants';
+import { DIALOG_WIDTH, MY_PROFILE_USERNAME } from '@app/core/variables/constants';
 import { DialogData, SearchForm, User } from '@dt/interfaces/instagram';
 import { InstagramService } from '@app/core/services/instagram.service';
 import { MatDialog } from '@angular/material';
@@ -24,7 +24,7 @@ export class UserComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private instaService: InstagramService,
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) {
   }
 
@@ -51,13 +51,11 @@ export class UserComponent implements OnInit, OnDestroy {
     this.router.navigate(['user', username]);
   }
 
-  onShowPhotoInDialog(photoUrl: string, caption: string = '', likes: number = 0) {
+  onShowPhotoInDialog(photoUrl: string) {
     this.dialog.open(PhotoDialogComponent, {
-      maxWidth: 1000,
+      maxWidth: DIALOG_WIDTH,
       data: {
         photoUrl: photoUrl,
-        caption: caption,
-        likes: likes
       } as DialogData
     });
   }
