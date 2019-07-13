@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from '@dt/interfaces/instagram';
+import { DialogData, User } from '@dt/interfaces/instagram';
+import { MatDialog } from '@angular/material';
+import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
+import { DIALOG_WIDTH } from '@app/core/variables/constants';
 
 @Component({
   selector: 'app-user-posts',
@@ -9,11 +12,24 @@ import { User } from '@dt/interfaces/instagram';
 export class UserPostsComponent implements OnInit {
   @Input() user: User;
 
-  constructor() {
+  constructor(
+    private dialog: MatDialog
+  ) {
   }
 
   get isPrivate() {
     return this.user.isPrivate;
+  }
+
+  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number) {
+    this.dialog.open(PhotoDialogComponent, {
+      maxWidth: DIALOG_WIDTH,
+      data: {
+        photoUrl: postImageUrl,
+        caption: caption,
+        likes: likes
+      } as DialogData
+    });
   }
 
   ngOnInit() {
