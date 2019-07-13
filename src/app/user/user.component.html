@@ -5,8 +5,9 @@
 <app-preloader
   *ngIf="!isDataLoaded">
 </app-preloader>
+
 <app-user-posts
-  *ngIf="user"
+  *ngIf="user; else notFound"
   [user]="user"
   class="user">
   <mat-card class="user__card">
@@ -71,3 +72,11 @@
     </mat-card-actions>
   </mat-card>
 </app-user-posts>
+
+<ng-template #notFound>
+  <div class="user">
+    <p class="user__not-found">
+      {{ errorMessage }}
+    </p>
+  </div>
+</ng-template>

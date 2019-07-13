@@ -14,9 +14,11 @@ import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
 })
 export class UserComponent implements OnInit, OnDestroy {
   paramsSubscription: Subscription;
+  instaSubscription: Subscription;
   username: string;
   user: User;
   isDataLoaded = true;
+  errorMessage: string;
 
   MY_PROFILE_USERNAME = MY_PROFILE_USERNAME;
 
@@ -40,6 +42,8 @@ export class UserComponent implements OnInit, OnDestroy {
   acceptSearch(searchForm: SearchForm) {
     const isUserSearch = searchForm.isUserSearch;
     const target = searchForm.target;
+    this.errorMessage = '';
+
     if (isUserSearch) {
       this.goToUser(target);
     } else {
@@ -70,18 +74,21 @@ export class UserComponent implements OnInit, OnDestroy {
 
   private fetchUser() {
     this.isDataLoaded = false;
-    this.instaService.getAccountByUsername(this.username).subscribe(
+    this.instaSubscription = this.instaService.getAccountByUsername(this.username).subscribe(
       user => {
         this.user = user;
         this.isDataLoaded = true;
       },
       error => {
-        console.log('User Not Found');
+        this.isDataLoaded = true;
+        this.user = null;
+        this.errorMessage = `User ${this.username} not found!`;
       }
     );
   }
 
   ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
+    this.instaSubscription.unsubscribe();
   }
 }
