@@ -2,8 +2,12 @@
   <div class="wrapper">
     <div class="image">
       <img class="photo" [src]="data.photoUrl" alt="">
-      <div class="image__info date">{{ data.timestamp | timestampToDate | date:'dd.MM.yyyy HH:mm' }}</div>
-      <div class="image__info likes">
+      <div
+        class="image__info date"
+        *ngIf="data.timestamp">
+        {{ data.timestamp | timestampToDate | date:'dd.MM.yyyy HH:mm' }}
+      </div>
+      <div class="image__info likes" *ngIf="data.likes > 0">
         <span class="likes__count">
           {{ data.likes }}
         </span>
