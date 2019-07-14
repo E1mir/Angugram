@@ -1,22 +1,42 @@
+@import "../core/variables/colors";
+
 .wrapper {
   overflow: hidden;
   text-align: center;
 
-  .photo {
-    max-width: 450px;
-  }
+  .image {
+    position: relative;
 
-  .info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__likes {
-      margin-right: 5px;
+    .photo {
+      max-width: 450px;
     }
 
-    &__icon {
-      color: red;
+    &__info {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.75);
+      bottom: 3px;
+      padding: 5px;
+      color: $white;
+      user-select: none;
+
+      &.date {
+        left: 0;
+      }
+
+      &.likes {
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .likes__count {
+          margin-right: 5px;
+        }
+
+        .likes__icon {
+          color: red;
+        }
+      }
     }
   }
 

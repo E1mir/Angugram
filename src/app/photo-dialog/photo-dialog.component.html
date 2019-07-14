@@ -1,15 +1,19 @@
 <div mat-dialog-content>
   <div class="wrapper">
-    <img class="photo" [src]="data.photoUrl" alt="">
-    <div class="info" *ngIf="data.likes > 0">
-      <span class="info__likes">
-      {{ data.likes }}
-      </span>
-      <i class="info__icon material-icons">
-        favorite
-      </i>
+    <div class="image">
+      <img class="photo" [src]="data.photoUrl" alt="">
+      <div class="image__info date">{{ data.timestamp | timestampToDate | date:'dd.MM.yyyy HH:mm' }}</div>
+      <div class="image__info likes">
+        <span class="likes__count">
+          {{ data.likes }}
+        </span>
+        <i class="likes__icon material-icons">
+          favorite
+        </i>
+      </div>
     </div>
   </div>
+  <hr>
   <div class="caption" *ngIf="data.caption">{{ data.caption }}</div>
 </div>
 <div mat-dialog-actions>
