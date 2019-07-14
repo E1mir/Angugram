@@ -42,6 +42,7 @@ export interface SearchForm {
 
 export interface DialogData {
   photoUrl: string;
+  timestamp: number;
   caption?: string;
   likes?: number;
 }
