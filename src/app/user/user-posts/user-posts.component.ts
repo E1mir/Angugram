@@ -25,13 +25,14 @@ export class UserPostsComponent implements OnInit {
     return this.user.mediaCount === 0;
   }
 
-  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number) {
+  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number, timestamp: number) {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,
       data: {
         photoUrl: postImageUrl,
         caption: caption,
-        likes: likes
+        likes: likes,
+        timestamp: timestamp
       } as DialogData
     });
   }

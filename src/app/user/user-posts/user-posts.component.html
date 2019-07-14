@@ -21,7 +21,7 @@
     class="posts__post"
     colspan="1"
     *ngFor="let post of user.posts">
-    <div class="image" (click)="onShowPhotoInDialog(post.url, post.caption, post.likes)">
+    <div class="image" (click)="onShowPhotoInDialog(post.url, post.caption, post.likes, post.timestamp)">
       <div class="image__overlay"></div>
       <div class="image__info">
         <div class="image__info__icon">
