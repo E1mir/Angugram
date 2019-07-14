@@ -18,6 +18,7 @@ import { ShortenPipe } from './core/pipes/shorten.pipe';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { NumberFormatPipe } from './core/pipes/number-format.pipe';
 import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
+import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
     ShortenPipe,
     UserPostsComponent,
     NumberFormatPipe,
-    PhotoDialogComponent
+    PhotoDialogComponent,
+    TimestampToDatePipe
   ],
   imports: [
     BrowserModule,
