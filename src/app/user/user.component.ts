@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DIALOG_WIDTH, MY_PROFILE_USERNAME } from '@app/core/variables/constants';
-import { DialogData, SearchForm, User } from '@dt/interfaces/instagram';
+import { DialogData, User } from '@dt/interfaces/instagram';
 import { InstagramService } from '@app/core/services/instagram.service';
 import { MatDialog } from '@angular/material';
 import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
@@ -30,6 +30,10 @@ export class UserComponent implements OnInit, OnDestroy {
   ) {
   }
 
+  get setAvatar() {
+    return {backgroundImage: `url('${this.user.profilePicUrl}')`};
+  }
+
   ngOnInit() {
     this.paramsSubscription = this.route.params.subscribe(
       (params: Params) => {
@@ -39,22 +43,6 @@ export class UserComponent implements OnInit, OnDestroy {
     );
   }
 
-  acceptSearch(searchForm: SearchForm) {
-    const isUserSearch = searchForm.isUserSearch;
-    const target = searchForm.target;
-    this.errorMessage = '';
-
-    if (isUserSearch) {
-      this.goToUser(target);
-    } else {
-      this.goToExplore(target);
-    }
-  }
-
-  goToUser(username: string) {
-    this.router.navigate(['user', username]);
-  }
-
   onShowPhotoInDialog(photoUrl: string) {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,
@@ -62,14 +50,6 @@ export class UserComponent implements OnInit, OnDestroy {
         photoUrl: photoUrl,
       } as DialogData
     });
-  }
-
-  goToExplore(tag: string) {
-    console.log('unsupported');
-  }
-
-  get setAvatar() {
-    return {backgroundImage: `url('${this.user.profilePicUrl}')`};
   }
 
   private fetchUser() {

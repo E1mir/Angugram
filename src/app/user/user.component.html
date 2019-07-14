@@ -1,11 +1,6 @@
-<app-search
-  (searchValue)="acceptSearch($event)">
-</app-search>
-
 <app-preloader
   *ngIf="!isDataLoaded">
 </app-preloader>
-
 <app-user-posts
   *ngIf="user; else notFound"
   [user]="user"

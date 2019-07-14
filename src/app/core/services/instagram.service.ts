@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { MainResponse, Media, Owner, User } from '@dt/interfaces/instagram';
-import { Observable } from 'rxjs';
+import { MainResponse, Media, Owner, SearchForm, User } from '@dt/interfaces/instagram';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class InstagramService {
   private MAIN_URL = 'https://instagram.com';
+  public searchSubmitted = new Subject<SearchForm>();
 
   constructor(private http: HttpClient) {
   }
