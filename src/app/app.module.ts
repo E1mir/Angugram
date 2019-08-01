@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from '@app/app.component';
 import { MaterialDesignModule } from '@app/material-design/material-design.module';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InstagramInterceptorService } from '@app/core/interceptors/instagram-interceptor.service';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
@@ -20,7 +20,7 @@ import { NumberFormatPipe } from './core/pipes/number-format.pipe';
 import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
 import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
 import { TagComponent } from './tag/tag.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 @NgModule({
   declarations: [
