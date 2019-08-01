@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToExplore(tag: string) {
-    console.log('unsupported');
+    this.router.navigate(['tag', tag]);
   }
 
   goToUser(username: string) {
