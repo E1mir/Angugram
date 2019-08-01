@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
   submit() {
     const searchValue = `${this.searchFormGroup.get('search').value}`;
     const searchForm: SearchForm = {} as SearchForm;
-    searchForm.target = searchValue.trim();
+    searchForm.target = searchValue.trim().replace(/#/g, '');
     searchForm.isUserSearch = this.isUserSearch;
     this.instaService.searchSubmitted.next(searchForm);
     this.searchFormGroup.reset();
