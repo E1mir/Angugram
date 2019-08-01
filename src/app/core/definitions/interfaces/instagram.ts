@@ -18,6 +18,18 @@ export interface User {
   externalUrl?: string;
 }
 
+export interface Tag {
+  id: number;
+  name: string;
+  mediaCount: number;
+  topMedia: Media[];
+  recentMedia: Media[];
+  profilePicUrl: string;
+  isTopMediaOnly: boolean;
+  allowFollowing: boolean;
+  isFollowing: boolean;
+}
+
 export interface Media {
   id: number;
   likes: number;
