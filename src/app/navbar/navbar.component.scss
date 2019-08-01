@@ -1,7 +1,7 @@
 @import "../core/variables/colors";
+@import "../core/variables/variables";
 
 .navbar {
-  $navbarHeight: 75px;
   font-family: Roboto, sans-serif;
   width: 100%;
   height: $navbarHeight;
@@ -24,7 +24,6 @@
       color: $white;
 
       .avatar {
-        $transitionTime: 0.3s;
         position: relative;
         overflow: hidden;
         border-radius: 50%;

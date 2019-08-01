@@ -10,7 +10,6 @@ import { SearchForm } from '@dt/interfaces/instagram';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public version = version;
 
   constructor(
     private router: Router,

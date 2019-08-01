@@ -1,0 +1,24 @@
+@import "../core/variables/colors";
+
+.footer {
+  position: relative;
+  top: 25px;
+  display: flex;
+  align-items: center;
+  padding: 15px 5px;
+  background-color: $secondColor;
+
+  &__version {
+    color: $white;
+  }
+
+  &__copyright {
+    justify-self: right;
+    color: $gray;
+    margin-top: 4px;
+
+    .link {
+      color: darken($gray, 15%);
+    }
+  }
+}

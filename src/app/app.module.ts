@@ -19,6 +19,8 @@ import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { NumberFormatPipe } from './core/pipes/number-format.pipe';
 import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
 import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
+import { TagComponent } from './tag/tag.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
     UserPostsComponent,
     NumberFormatPipe,
     PhotoDialogComponent,
-    TimestampToDatePipe
+    TimestampToDatePipe,
+    TagComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
