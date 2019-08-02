@@ -1,28 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DialogData, User } from '@dt/interfaces/instagram';
-import { MatDialog } from '@angular/material';
+import { DialogData, Tag } from '@dt/interfaces/instagram';
 import { PhotoDialogComponent } from '@app/core/components/photo-dialog/photo-dialog.component';
 import { DIALOG_WIDTH } from '@app/core/variables/constants';
+import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-user-posts',
-  templateUrl: './user-posts.component.html',
-  styleUrls: ['./user-posts.component.scss']
+  selector: 'app-tag-posts',
+  templateUrl: './tag-posts.component.html',
+  styleUrls: ['./tag-posts.component.scss']
 })
-export class UserPostsComponent implements OnInit {
-  @Input() user: User;
+export class TagPostsComponent implements OnInit {
+  @Input() tag: Tag = null;
 
   constructor(
     private dialog: MatDialog
   ) {
-  }
-
-  get isPrivate(): boolean {
-    return this.user.isPrivate;
-  }
-
-  get noPosts(): boolean {
-    return this.user.mediaCount === 0;
   }
 
   onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number, timestamp: number): void {
@@ -38,5 +30,7 @@ export class UserPostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
+
 }

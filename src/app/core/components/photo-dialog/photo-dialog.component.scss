@@ -1,0 +1,67 @@
+@import "../../variables/colors";
+
+.wrapper {
+  overflow: hidden;
+  text-align: center;
+
+  .image {
+    position: relative;
+
+    .photo {
+      max-width: 450px;
+    }
+
+    &__info {
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.75);
+      bottom: 3px;
+      padding: 5px;
+      color: $white;
+      user-select: none;
+
+      &.date {
+        left: 0;
+      }
+
+      &.likes {
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .likes__count {
+          margin-right: 5px;
+        }
+
+        .likes__icon {
+          color: red;
+        }
+      }
+    }
+  }
+
+  .caption {
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

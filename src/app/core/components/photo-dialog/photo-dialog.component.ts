@@ -15,10 +15,10 @@ export class PhotoDialogComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
-  close() {
+  close(): void {
     this.dialogRef.close();
   }
 }

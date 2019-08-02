@@ -1,0 +1,25 @@
+<div mat-dialog-content>
+  <div class="wrapper">
+    <div class="image">
+      <img class="photo" [src]="data.photoUrl" alt="">
+      <div
+        class="image__info date"
+        *ngIf="data.timestamp">
+        {{ data.timestamp | timestampToDate | date:'dd.MM.yyyy HH:mm' }}
+      </div>
+      <div class="image__info likes" *ngIf="data.likes > 0">
+        <span class="likes__count">
+          {{ data.likes }}
+        </span>
+        <i class="likes__icon material-icons">
+          favorite
+        </i>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="caption" *ngIf="data.caption">{{ data.caption }}</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+</div>

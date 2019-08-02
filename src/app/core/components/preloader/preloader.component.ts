@@ -10,7 +10,7 @@ export class PreloaderComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

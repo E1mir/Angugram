@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DIALOG_WIDTH, MY_PROFILE_USERNAME } from '@app/core/variables/constants';
-import { DialogData, SearchForm, User } from '@dt/interfaces/instagram';
+import { DialogData, User } from '@dt/interfaces/instagram';
 import { InstagramService } from '@app/core/services/instagram.service';
 import { MatDialog } from '@angular/material';
-import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
+import { PhotoDialogComponent } from '@app/core/components/photo-dialog/photo-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -30,7 +30,11 @@ export class UserComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit() {
+  get setAvatar(): { [key: string]: string } {
+    return {backgroundImage: `url('${this.user.profilePicUrl}')`};
+  }
+
+  ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe(
       (params: Params) => {
         this.username = params['username'];
@@ -39,23 +43,7 @@ export class UserComponent implements OnInit, OnDestroy {
     );
   }
 
-  acceptSearch(searchForm: SearchForm) {
-    const isUserSearch = searchForm.isUserSearch;
-    const target = searchForm.target;
-    this.errorMessage = '';
-
-    if (isUserSearch) {
-      this.goToUser(target);
-    } else {
-      this.goToExplore(target);
-    }
-  }
-
-  goToUser(username: string) {
-    this.router.navigate(['user', username]);
-  }
-
-  onShowPhotoInDialog(photoUrl: string) {
+  onShowPhotoInDialog(photoUrl: string): void {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,
       data: {
@@ -64,15 +52,7 @@ export class UserComponent implements OnInit, OnDestroy {
     });
   }
 
-  goToExplore(tag: string) {
-    console.log('unsupported');
-  }
-
-  get setAvatar() {
-    return {backgroundImage: `url('${this.user.profilePicUrl}')`};
-  }
-
-  private fetchUser() {
+  private fetchUser(): void {
     this.isDataLoaded = false;
     this.instaSubscription = this.instaService.getAccountByUsername(this.username).subscribe(
       user => {

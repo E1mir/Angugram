@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from '@app/app.component';
 import { MaterialDesignModule } from '@app/material-design/material-design.module';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { InstagramInterceptorService } from '@app/core/interceptors/instagram-interceptor.service';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
@@ -16,8 +16,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { ShortenPipe } from './core/pipes/shorten.pipe';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
-import { NumberFormatPipe } from './core/pipes/number-format.pipe';
-import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
+import { NumberShortenPipe } from './core/pipes/number-shorten.pipe';
+import { PhotoDialogComponent } from './core/components/photo-dialog/photo-dialog.component';
+import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
+import { TagComponent } from './tag/tag.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { TagPostsComponent } from './tag/tag-posts/tag-posts.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +34,12 @@ import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
     SearchComponent,
     ShortenPipe,
     UserPostsComponent,
-    NumberFormatPipe,
-    PhotoDialogComponent
+    NumberShortenPipe,
+    PhotoDialogComponent,
+    TimestampToDatePipe,
+    TagComponent,
+    FooterComponent,
+    TagPostsComponent
   ],
   imports: [
     BrowserModule,

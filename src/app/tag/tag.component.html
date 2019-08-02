@@ -1,0 +1,15 @@
+<app-preloader
+  *ngIf="!isDataLoaded">
+</app-preloader>
+<app-tag-posts
+  *ngIf="tag; else notFound"
+  [tag]="tag">
+</app-tag-posts>
+
+<ng-template #notFound>
+  <div class="user">
+    <p class="user__not-found">
+      {{ errorMessage }}
+    </p>
+  </div>
+</ng-template>

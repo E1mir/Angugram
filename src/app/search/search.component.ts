@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EXPLORE, FIND, TAG_PH, UNSELECTED_PH, USERNAME_PH } from '@app/core/variables/constants';
 import { SearchForm } from '@dt/interfaces/instagram';
+import { InstagramService } from '@app/core/services/instagram.service';
 
 @Component({
   selector: 'app-search',
@@ -14,18 +15,19 @@ export class SearchComponent implements OnInit {
   buttonName = EXPLORE;
   isUserSearch = false;
 
-  @Output() searchValue = new EventEmitter<SearchForm>();
 
-  constructor() {
+  constructor(
+    private instaService: InstagramService
+  ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchFormGroup = new FormGroup({
       'search': new FormControl(null, [Validators.required, this.invalidSearch])
     });
   }
 
-  onSearchInputChange() {
+  onSearchInputChange(): void {
     const value = `${this.searchFormGroup.get('search').value}`.trim();
     if (value === '') {
       this.searchPlaceholder = UNSELECTED_PH;
@@ -43,12 +45,14 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  submit() {
+  submit(): void {
     const searchValue = `${this.searchFormGroup.get('search').value}`;
     const searchForm: SearchForm = {} as SearchForm;
-    searchForm.target = searchValue.trim();
+    searchForm.target = searchValue.trim().replace(/#/g, '');
     searchForm.isUserSearch = this.isUserSearch;
-    this.searchValue.emit(searchForm);
+    this.instaService.searchSubmitted.next(searchForm);
+    this.searchFormGroup.reset();
+    this.searchPlaceholder = UNSELECTED_PH;
   }
 
   invalidSearch(control: FormControl): { [s: string]: boolean } {

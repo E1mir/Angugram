@@ -1,12 +1,31 @@
 @import "../../core/variables/colors";
-@import "../../core/variables/variables";
 
 .posts {
-  &__avatar {
-    //KEEP
+  &__label {
+    display: block;
+    margin: 10px 0;
+    color: #a5a5a5;
+
+    &_top {
+      .left {
+      }
+
+      .right {
+        float: right;
+      }
+    }
+
+    &_recent {
+
+    }
+
+    &::after {
+      content: '';
+      clear: both;
+    }
   }
 
-  &__post {
+  .post {
     user-select: none;
 
     .image {
@@ -64,10 +83,5 @@
       // KEEP
     }
 
-  }
-
-  &__private {
-    text-align: center;
-    font-size: 25px;
   }
 }
