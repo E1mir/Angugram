@@ -13,9 +13,8 @@
   }
 
   &__copyright {
-    justify-self: right;
+    float: right;
     color: $gray;
-    margin-top: 4px;
 
     .link {
       color: darken($gray, 15%);
