@@ -17,7 +17,7 @@ import { SearchComponent } from './search/search.component';
 import { ShortenPipe } from './core/pipes/shorten.pipe';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { NumberShortenPipe } from './core/pipes/number-shorten.pipe';
-import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
+import { PhotoDialogComponent } from './core/components/photo-dialog/photo-dialog.component';
 import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
 import { TagComponent } from './tag/tag.component';
 import { FooterComponent } from './core/components/footer/footer.component';

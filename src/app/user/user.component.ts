@@ -5,7 +5,7 @@ import { DIALOG_WIDTH, MY_PROFILE_USERNAME } from '@app/core/variables/constants
 import { DialogData, User } from '@dt/interfaces/instagram';
 import { InstagramService } from '@app/core/services/instagram.service';
 import { MatDialog } from '@angular/material';
-import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
+import { PhotoDialogComponent } from '@app/core/components/photo-dialog/photo-dialog.component';
 
 @Component({
   selector: 'app-user',

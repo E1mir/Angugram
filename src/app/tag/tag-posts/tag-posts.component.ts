@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DialogData, Tag } from '@dt/interfaces/instagram';
-import { PhotoDialogComponent } from '@app/photo-dialog/photo-dialog.component';
+import { PhotoDialogComponent } from '@app/core/components/photo-dialog/photo-dialog.component';
 import { DIALOG_WIDTH } from '@app/core/variables/constants';
 import { MatDialog } from '@angular/material';
 
