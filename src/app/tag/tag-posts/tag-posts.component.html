@@ -1,0 +1,60 @@
+<div class="posts">
+  <label class="posts__label posts__label_top">
+    <span class="left">&minus; Top posts</span>
+    <span class="right">#{{ tag.name }} &minus; {{ tag.mediaCount | numberShorten }}</span>
+  </label>
+
+  <mat-grid-list
+    cols="3"
+    class="posts__top">
+    <mat-grid-tile
+      class="post"
+      colspan="1"
+      *ngFor="let post of tag.topMedia">
+      <div class="image" (click)="onShowPhotoInDialog(post.url, post.caption, post.likes, post.timestamp)">
+        <div class="image__overlay"></div>
+        <div class="image__info">
+          <div class="image__info__icon">
+            <i class="material-icons">
+              favorite_border
+            </i>
+          </div>
+          <p class="image__info__likes-count">
+            {{ post.likes | numberShorten }}
+          </p>
+        </div>
+        <img
+          class="image__photo"
+          [src]="post.url"
+          [alt]="post.id">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <label class="posts__label posts__label_recent">&minus; Recent posts</label>
+  <mat-grid-list
+    cols="4"
+    class="posts__recent">
+    <mat-grid-tile
+      class="post"
+      colspan="1"
+      *ngFor="let post of tag.recentMedia">
+      <div class="image" (click)="onShowPhotoInDialog(post.url, post.caption, post.likes, post.timestamp)">
+        <div class="image__overlay"></div>
+        <div class="image__info">
+          <div class="image__info__icon">
+            <i class="material-icons">
+              favorite_border
+            </i>
+          </div>
+          <p class="image__info__likes-count">
+            {{ post.likes | numberShorten }}
+          </p>
+        </div>
+        <img
+          class="image__photo"
+          [src]="post.url"
+          [alt]="post.id">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
