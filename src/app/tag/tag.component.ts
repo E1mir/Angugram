@@ -39,6 +39,7 @@ export class TagComponent implements OnInit, OnDestroy {
       (tag: Tag) => {
         this.tag = tag;
         this.isDataLoaded = true;
+        this.errorMessage = null;
       },
       error => {
         this.isDataLoaded = true;
