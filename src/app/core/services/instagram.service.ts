@@ -6,13 +6,42 @@ import { Observable, Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class InstagramService {
-  private MAIN_URL = 'https://instagram.com';
-  public searchSubmitted = new Subject<SearchForm>();
 
   constructor(private http: HttpClient) {
   }
 
-  searchByTag(tag: string): Observable<any> {
+  private MAIN_URL = 'https://instagram.com';
+  public searchSubmitted = new Subject<SearchForm>();
+
+  private static getMediaPosts(mediaData: any) {
+    const posts: Media[] = [];
+    for (let post of mediaData.edges) {
+      post = post.node;
+      const media = {} as Media;
+      const owner = {} as Owner;
+      owner.id = +post.owner.id;
+      if (owner.username) {
+        owner.username = post.owner.username;
+      }
+      media.id = post.id;
+      media.caption = '';
+      for (const caption of post.edge_media_to_caption.edges) {
+        media.caption += caption.node.text;
+      }
+      media.isVideo = post.is_video;
+      if (post.location) {
+        media.location = post.location.name;
+      }
+      media.timestamp = post.taken_at_timestamp;
+      media.likes = post.edge_liked_by.count;
+      media.url = post.display_url;
+      media.comments_disabled = post.comments_disabled;
+      posts.push(media);
+    }
+    return posts;
+  }
+
+  searchByTag(tag: string): Observable<Tag> {
     return this.http.get(`${this.MAIN_URL}/explore/tags/${tag}/`).pipe(
       map(
         (response: MainResponse) => {
@@ -25,10 +54,10 @@ export class InstagramService {
           exploredTag.isFollowing = tagData.is_following;
           exploredTag.isTopMediaOnly = tagData.is_top_media_only;
           exploredTag.mediaCount = tagData.edge_hashtag_to_media.count;
-          const topMediaData = tagData.edge_hashtag_to_top_posts.edges;
-          const recentMediaData = tagData.edge_hashtag_to_media.edges;
-          exploredTag.topMedia = this.getMediaPosts(topMediaData);
-          exploredTag.recentMedia = this.getMediaPosts(recentMediaData);
+          const topMediaData = tagData.edge_hashtag_to_top_posts;
+          const recentMediaData = tagData.edge_hashtag_to_media;
+          exploredTag.topMedia = InstagramService.getMediaPosts(topMediaData);
+          exploredTag.recentMedia = InstagramService.getMediaPosts(recentMediaData);
           return exploredTag;
         }
       )
@@ -55,43 +84,11 @@ export class InstagramService {
           user.fullName = userData.full_name;
           user.externalUrl = userData.external_url;
           user.mediaCount = userData.edge_owner_to_timeline_media.count;
-          user.posts = this.fetchMedia(userData);
+          const mediaData = userData.edge_owner_to_timeline_media;
+          user.posts = InstagramService.getMediaPosts(mediaData);
           return user;
         }
       )
     );
-  }
-
-  private fetchMedia(userData: any): Media[] {
-    const mediaData = userData.edge_owner_to_timeline_media;
-    return this.getMediaPosts(mediaData);
-  }
-
-  private getMediaPosts(mediaData: any) {
-    const posts: Media[] = [];
-    for (let post of mediaData.edges) {
-      post = post.node;
-      const media = {} as Media;
-      const owner = {} as Owner;
-      owner.id = +post.owner.id;
-      if (owner.username) {
-        owner.username = post.owner.username;
-      }
-      media.id = post.id;
-      media.caption = '';
-      for (const caption of post.edge_media_to_caption.edges) {
-        media.caption += caption.node.text;
-      }
-      media.isVideo = post.is_video;
-      if (post.location) {
-        media.location = post.location.name;
-      }
-      media.timestamp = post.taken_at_timestamp;
-      media.likes = post.edge_liked_by.count;
-      media.url = post.display_url;
-      media.comments_disabled = post.comments_disabled;
-      posts.push(media);
-    }
-    return posts;
   }
 }
