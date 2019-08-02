@@ -16,11 +16,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { ShortenPipe } from './core/pipes/shorten.pipe';
 import { UserPostsComponent } from './user/user-posts/user-posts.component';
-import { NumberFormatPipe } from './core/pipes/number-format.pipe';
+import { NumberShortenPipe } from './core/pipes/number-shorten.pipe';
 import { PhotoDialogComponent } from './photo-dialog/photo-dialog.component';
 import { TimestampToDatePipe } from './core/pipes/timestamp-to-date.pipe';
 import { TagComponent } from './tag/tag.component';
 import { FooterComponent } from './core/components/footer/footer.component';
+import { TagPostsComponent } from './tag/tag-posts/tag-posts.component';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import { FooterComponent } from './core/components/footer/footer.component';
     SearchComponent,
     ShortenPipe,
     UserPostsComponent,
-    NumberFormatPipe,
+    NumberShortenPipe,
     PhotoDialogComponent,
     TimestampToDatePipe,
     TagComponent,
-    FooterComponent
+    FooterComponent,
+    TagPostsComponent
   ],
   imports: [
     BrowserModule,

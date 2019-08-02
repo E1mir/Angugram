@@ -47,7 +47,7 @@
         matTooltipShowDelay="500"
         color="primary"
         class="user__followers-info">
-        <span class="info">{{ user.followers | numberFormat }}</span>
+        <span class="info">{{ user.followers | numberShorten }}</span>
         <i class="icon material-icons" title="Followers">
           favorite_border
         </i>
@@ -59,7 +59,7 @@
         matTooltipShowDelay="500"
         color="primary"
         class="user__followers-info">
-        <span class="info">{{ user.followings | numberFormat }}</span>
+        <span class="info">{{ user.followings | numberShorten }}</span>
         <i class="icon material-icons" title="Followings">
           favorite
         </i>
