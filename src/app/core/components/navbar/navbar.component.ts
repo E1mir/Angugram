@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instagramService.getAccountByUsername(MY_PROFILE_USERNAME).subscribe(
       (user) => {
         this.me = user;
@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
     );
   }
 
-  toDeveloperPage() {
+  toDeveloperPage(): void {
     this.router.navigate(['user', this.me.username]);
   }
 }

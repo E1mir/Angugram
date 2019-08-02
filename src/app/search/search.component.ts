@@ -21,13 +21,13 @@ export class SearchComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchFormGroup = new FormGroup({
       'search': new FormControl(null, [Validators.required, this.invalidSearch])
     });
   }
 
-  onSearchInputChange() {
+  onSearchInputChange(): void {
     const value = `${this.searchFormGroup.get('search').value}`.trim();
     if (value === '') {
       this.searchPlaceholder = UNSELECTED_PH;
@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  submit() {
+  submit(): void {
     const searchValue = `${this.searchFormGroup.get('search').value}`;
     const searchForm: SearchForm = {} as SearchForm;
     searchForm.target = searchValue.trim().replace(/#/g, '');

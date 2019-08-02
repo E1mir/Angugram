@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { version } from '../../../package.json';
 import { InstagramService } from '@app/core/services/instagram.service';
 import { SearchForm } from '@dt/interfaces/instagram';
 
@@ -18,7 +17,7 @@ export class HomeComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instaService.searchSubmitted.subscribe(
       (searchForm: SearchForm) => {
         this.acceptSearch(searchForm);
@@ -26,7 +25,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  private acceptSearch(searchForm: SearchForm) {
+  private acceptSearch(searchForm: SearchForm): void {
     const isUserSearch = searchForm.isUserSearch;
     const target = searchForm.target;
 
@@ -37,11 +36,11 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  goToExplore(tag: string) {
+  goToExplore(tag: string): void {
     this.router.navigate(['tag', tag]);
   }
 
-  goToUser(username: string) {
+  goToUser(username: string): void {
     this.router.navigate(['user', username]);
   }
 

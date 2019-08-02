@@ -17,15 +17,15 @@ export class UserPostsComponent implements OnInit {
   ) {
   }
 
-  get isPrivate() {
+  get isPrivate(): boolean {
     return this.user.isPrivate;
   }
 
-  get noPosts() {
+  get noPosts(): boolean {
     return this.user.mediaCount === 0;
   }
 
-  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number, timestamp: number) {
+  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number, timestamp: number): void {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,
       data: {
@@ -37,6 +37,6 @@ export class UserPostsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 }

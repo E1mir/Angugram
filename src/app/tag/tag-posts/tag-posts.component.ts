@@ -17,7 +17,7 @@ export class TagPostsComponent implements OnInit {
   ) {
   }
 
-  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number, timestamp: number) {
+  onShowPhotoInDialog(postImageUrl: string, caption: string, likes: number, timestamp: number): void {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,
       data: {
@@ -29,7 +29,7 @@ export class TagPostsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
   }
 

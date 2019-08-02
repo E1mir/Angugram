@@ -8,12 +8,11 @@ import { version } from '../../../../../package.json';
 })
 export class FooterComponent implements OnInit {
   public version = version;
-  public currentDate = new Date();
 
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

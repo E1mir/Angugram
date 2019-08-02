@@ -30,11 +30,11 @@ export class UserComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  get setAvatar() {
+  get setAvatar(): { [key: string]: string } {
     return {backgroundImage: `url('${this.user.profilePicUrl}')`};
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe(
       (params: Params) => {
         this.username = params['username'];
@@ -43,7 +43,7 @@ export class UserComponent implements OnInit, OnDestroy {
     );
   }
 
-  onShowPhotoInDialog(photoUrl: string) {
+  onShowPhotoInDialog(photoUrl: string): void {
     this.dialog.open(PhotoDialogComponent, {
       maxWidth: DIALOG_WIDTH,
       data: {
@@ -52,7 +52,7 @@ export class UserComponent implements OnInit, OnDestroy {
     });
   }
 
-  private fetchUser() {
+  private fetchUser(): void {
     this.isDataLoaded = false;
     this.instaSubscription = this.instaService.getAccountByUsername(this.username).subscribe(
       user => {

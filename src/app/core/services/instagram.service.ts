@@ -13,7 +13,7 @@ export class InstagramService {
   private MAIN_URL = 'https://instagram.com';
   public searchSubmitted = new Subject<SearchForm>();
 
-  private static getMediaPosts(mediaData: any) {
+  private static getMediaPosts(mediaData: any): Media[] {
     const posts: Media[] = [];
     for (let post of mediaData.edges) {
       post = post.node;
